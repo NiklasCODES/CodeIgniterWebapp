@@ -7,6 +7,8 @@ class MainController extends CI_Controller {
 		$data['view'] = "menus/main";
 		$data['ci'] = $this;
 		$this->load->view("bones/skeleton", $data);
-	}
 
+
+
+	}
 }

@@ -1,8 +1,16 @@
 <!-- <img class="imageContainer center" src="<?php echo base_url();?>/assets/static/images/voting.jpg"/> -->
+<h1 class="heading">What do you prefer?</h1>
+<div class="btnBox">
+	<button id="leftBtn" class="btn btn-dark" >Cola</button>
+	<p class="margin-lr-10">or</p>
+    <button id="rightBtn" class="btn btn-dark">Pepsi</button>
+</div>
+<h1 id="countDown"></h1>
+<canvas id="myChart" width="250" height="100"></canvas>
+<h1>You clicked: <h1 id="clickedText"></h1>
+<script>
 
-<h1 class="heading">Strawpoll</h1>
-
-<button type="button" class="btn btn-warning btn-circle btn-xl"><i class="glyphicon glyphicon-remove"></i></button>
-<button type="button" class="btn btn-danger btn-circle btn-xl"><img class="iconResize" src="<?php echo base_url();?>/assets/static/images/heartIcon.png"/></button>
+	
+</script>
 
 
