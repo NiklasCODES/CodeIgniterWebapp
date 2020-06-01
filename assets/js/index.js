@@ -3,6 +3,7 @@ window.onload = function() {
 	var countDownDate = new Date("June 5, 2020 12:00:00").getTime();
 	setCountDown(countDownDate);
 	this.events();
+	this.console.log("Halloooo!");
 }
 
 function setCountDown(dueToDate) {
