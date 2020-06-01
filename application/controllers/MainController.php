@@ -8,7 +8,7 @@ class MainController extends CI_Controller {
 		$data['ci'] = $this;
 		$this->load->view("bones/skeleton", $data);
 
-
+		//hallo
 
 	}
 }
