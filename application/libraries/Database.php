@@ -4,7 +4,7 @@ class Database {
 
 	function getData($instance) {
 		$instance->load->database();
-    	return $instance->db->query("select * from Votes where id = 0");
+    	return $instance->db->query("select * from Votes where id = 1");
 	}
 
 	function updateVoteCount($vote, $instance) {

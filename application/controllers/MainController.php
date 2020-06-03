@@ -21,20 +21,23 @@ class MainController extends CI_Controller {
 	}
 
 	public function getVoteCount($id) {
-		$this->load->libary("database");
-		$result = $this->database->getData($this);
-		$var = NULL;
-		foreach($result->result() as $row) {
-			$var = $this->database->getVoteResults($row["left"], $row["right"], $this);
-		}
+		
 	}
 
-	public function showResults($arr, $data) {
-		$params["name"] = $data["name"]; 
-		$params["left"] = $data["left"];
-		$params["resLeft"] = $arr["left"];
-		$params["right"] = $data["right"];
-		$params["resRight"] = $arr["right"]; 
-		$this->load->view("templates/result", $params);
+	public function showResults() {
+		$this->load->library("database");
+		$res = $this->database->getData($this);
+		$var = NULL;
+		foreach($res->result() as $row) {
+			$var = array( "name" => $row->name,
+						"left" => $row->left,
+						"right" => $row->right,
+						"resLeft" => 5,
+						"resRight" => 5);
+		}
+
+		//$params = array( "result" => )
+		$this->load->view("templates/result", $var);
 	}
+
 }
