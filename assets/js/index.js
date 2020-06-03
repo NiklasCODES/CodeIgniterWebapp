@@ -1,9 +1,3 @@
-window.onload = function() {
-
-	var countDownDate = new Date("June 5, 2020 12:00:00").getTime();
-	setCountDown(countDownDate);
-	this.events();
-}
 
 function setCountDown(dueToDate) {
 	var x = setInterval(function() {
@@ -34,23 +28,34 @@ function setCountDown(dueToDate) {
 	}, 1000);
 }
 
-events();
+document.addEventListener("DOMContentLoaded", function(event) {
+	var countDownDate = new Date("June 5, 2020 12:00:00").getTime();
+	setCountDown(countDownDate);
+	events();
+});
 
 function events() {
 	//document.getElementById("rightBtn");
-	document.getElementById("clickedText").innerHTML = "Hallo";
-	document.getElementById("leftBtn").addEventListener("click", function() {
-		var s = document.getElementById("leftBtn").firstChild.textContent;
-		console.log(s);
-		clickedText.innerHTML = s;
-		graph();
-	});
-	document.getElementById("rightBtn").addEventListener("click", function() {
-		var s = document.getElementById("rightBtn").firstChild.textContent;
-		console.log(s);
-		clickedText.innerHTML = s;
-		graph();
-	});
+	var a = document.getElementsByClassName("left")
+	
+	for( let i = 0; i < a.length; a++) {
+		a[i].addEventListener("click", function() {
+        	var s = a[i].innerText;
+        	console.log(s);
+        	graph();
+		});
+	}
+
+	var b = document.getElementsByClassName("right")
+
+    for( let i = 0; i < a.length; a++) {
+    	b[i].addEventListener("click", function() {
+			
+            var s = b[i].innerText;
+            console.log(s);
+          	graph();
+    	});
+    }
 }
 
 function graph() {
