@@ -11,6 +11,19 @@ class MainController extends CI_Controller {
 		});
 	}
 
+	public function showAddVotingPage() {
+		$data["ci"] = $this;
+		$this->load->view("bones/ownpoll", $data);
+	}
+
+	public function addVote() {
+		$name = $this->input->post("question");
+		$left = $this->input->post("left");
+		$right = $this->input->post("right");
+		log_message("info", "data: " . $name . ", " . $left . ", " . $right);
+		$this->database->createVoting( $this, $name, $left, $right);
+	}
+
 	public function index() {
 		$a = array( "context" => $this);
 		$data['view'] = "menus/main";
@@ -24,7 +37,7 @@ class MainController extends CI_Controller {
 		$resArr = $x->result_array();
 		log_message("info", "JSON ARRAY TO STRING: " . json_encode($arr));
    		for($e = 0; $e < count($arr); $e++) {
-   			for($i = 0; $i <= (count($resArr)-1); $i++) {
+   			for($i = 0; $i < count($resArr); $i++) {
    				if($arr[$e]["value"]== $resArr[$i]["id"]) {
    					//log_message("error", "ARRAY: {$arr[$e][value]}, RESULT ARRAY: {$resArr[$i][id]}");
    					unset($resArr[$i]);

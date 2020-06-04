@@ -56,6 +56,8 @@ $route['testing'] = "votecontroller/index";
 $route["results"] = "maincontroller/showresults";
 $route["updatecount/(:any)"] = "maincontroller/incrementsubmission/$1";
 $route['login'] = 'usercontroller/view/$1';
+$route['register'] = 'usercontroller/register/$1';
 $route["logout"] = "usercontroller/logout";
+$route["addvoting"] = "maincontroller/showAddVotingPage";
 
 

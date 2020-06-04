@@ -18,6 +18,12 @@ class Database {
 		$instance->db->query("update Submissions set Count = Count + 1 where Name = '$vote'");
 	}
 
+	function createVoting($instance, $name, $left, $right) {
+		$instance->load->database();
+		$instance->db->query("insert into Votes ( name, left, right) values ( \"$name\", \"$left\", \"$right\")");
+		$instance->db->query("insert into Submissions ( Name) values (\"$left\"), (\"$right\")");
+	}
+
 	function getVoteResults($left, $right, $instance) {
 		$instance->load->database();
 		$resLeft = $instance->db->query("select * from Submissions where name = '$left'");

@@ -7,7 +7,10 @@
     		</li>
           	<li class="nav-item active">
     	  		<a class="nav-link" href="<?php echo site_url();?>results">Results</a>
-          	</li>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="<?php echo site_url();?>addvoting">Create your own voting</a> 
+			</li>
         </ul>
   	</div>
 </div>
