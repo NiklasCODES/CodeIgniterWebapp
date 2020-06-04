@@ -40,8 +40,8 @@ function events() {
 	
 	for( let i = 0; i < a.length; a++) {
 		a[i].addEventListener("click", function() {
-        	var s = a[i].innerText;
-        	console.log(s);
+        	//var s = a[i].innerText;
+        	console.log("Clicked");
         	graph();
 		});
 	}
@@ -51,8 +51,8 @@ function events() {
     for( let i = 0; i < a.length; a++) {
     	b[i].addEventListener("click", function() {
 			
-            var s = b[i].innerText;
-            console.log(s);
+            //var s = b[i].innerText;
+            console.log("Clicked");
           	graph();
     	});
     }

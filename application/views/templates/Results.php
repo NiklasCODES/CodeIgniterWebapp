@@ -9,12 +9,16 @@
 			<script src="<?php echo base_url();?>/assets/bootstrap/js/bootstrap.js"></script>
 			<script type="text/javascript" src="<?php echo base_url();?>/assets/js/Chart.js"></script>
 			<script type="text/javascript" src="<?php echo base_url();?>/assets/js/index.js"></script>
-        </head>
+		</head>
         <body>
-			<?php $ci->load->view("menus/menubar");?>	
-			<?php foreach($results->result_array() as $row): ?>
-				<?php $var = array( "name" => $row["name"], "left" => $row["left"], "right" => $row["right"], "ci" => $ci); ?>
-				<?php $ci->load->view("menus/main", $var);?>
-			<?php endforeach; ?>
+			<?php $ci->load->view("menus/menubar");?>
+			<h1 class="heading">Results</h1>
+			<div class="resultsAlign">
+				<?php foreach($data as $row): ?>
+        			<h1><?php echo $row["name"];?></h1>        
+                    <h1><?php echo $row["left"];?>: <?php echo $row["resLeft"];?></h1>
+                    <h1><?php echo $row["right"];?>: <?php echo $row["resRight"];?></h1>
+				<?php endforeach; ?>
+			</div>
         </body>
 </html>

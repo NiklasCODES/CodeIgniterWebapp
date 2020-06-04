@@ -31,6 +31,9 @@
 	margin-top: 5px;
 }
 
+.resultsAlign {
+	text-align: center;
+}
 #countDown {
 	text-align: center;
 	margin-top: 25px
