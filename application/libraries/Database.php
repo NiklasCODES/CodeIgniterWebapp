@@ -7,6 +7,11 @@ class Database {
     	return $instance->db->query("select * from Votes where id = 1");
 	}
 
+	function didUserVote($instance, $userId) {
+		$instance->load->database();
+		return $instance->db->query("select * from User where id = \"$userId\"")->result()[0]->votedIn;
+	}
+
 	function incrementVoteCount($vote, $instance) {
 		
 		$instance->load->database();

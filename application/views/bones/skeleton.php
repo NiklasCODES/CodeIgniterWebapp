@@ -12,7 +12,7 @@
         </head>
         <body>
 			<?php $ci->load->view("menus/menubar");?>	
-			<?php foreach($results->result_array() as $row): ?>
+			<?php foreach($results as $row): ?>
 				<?php $var = array( "name" => $row["name"], "left" => $row["left"], "right" => $row["right"], "ci" => $ci); ?>
 				<?php $ci->load->view("menus/main", $var);?>
 			<?php endforeach; ?>

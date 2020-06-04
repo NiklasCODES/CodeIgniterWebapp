@@ -2,21 +2,60 @@
 
 class MainController extends CI_Controller {
 
+	function __construct() {
+		parent::__construct();
+		$this->load->model("Login_model");
+		$this->load->library("database");
+		set_error_handler(function($errno, $errstr, $errfile, $errline ){
+			//throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
+		});
+	}
+
 	public function index() {
 		$a = array( "context" => $this);
-		$this->load->library("database");
 		$data['view'] = "menus/main";
 		$data['ci'] = $this;
 		$x = $this->database->getAllVotes($this);
-		$data["results"] = $x;
+
+		$s = $this->database->didUserVote($this, $this->session->userdata("id_user"));
+		$arr = json_decode($s, true);
+		log_message("error", "JSON String: " . $s);
+
+		$resArr = $x->result_array();
+		log_message("info", "JSON ARRAY TO STRING: " . json_encode($arr));
+   		for($e = 0; $e < count($arr); $e++) {
+   			for($i = 0; $i <= (count($resArr)-1); $i++) {
+   				if($arr[$e]["value"]== $resArr[$i]["id"]) {
+   					//log_message("error", "ARRAY: {$arr[$e][value]}, RESULT ARRAY: {$resArr[$i][id]}");
+   					unset($resArr[$i]);
+   				}
+   				//log_message("error", "ARRAY: {$arr[$e][value]}, RESULT ARRAY: {$resArr[$i][id]}");
+   			}
+   			//log_message("error", "ARRAY: {$arr[$e][value]}");
+		    } 
+
+		$data["results"] = $resArr;
 		$this->load->view("bones/skeleton", $data);
+	}
 
-		//hallo
+	public function login() {
+		if($_POST) {
+			$result = $this->Login_model->check_user($_POST);
+			
+			if(!empty($result)) {
+				$data = array(
+					"id_user" => $result->ID,
+					"username" => $result->User,
+				);
 
+				$this->session->set_flashdata("flash_data", "Password oder username is wrong");
+				redirect("login");
+			}
+		}
+		$this->load->view("templates/login");
 	}
 
 	public function vote($option) {
-		$this->load->libary("database");
 		$this->database->updateVoteCount($option, $this);
 	}
 
@@ -31,7 +70,6 @@ class MainController extends CI_Controller {
 	}
 	
 	public function showResults() {
-		$this->load->library("database");
 		//$resOne = $this->database->getData($this);
 		//$this->database->updateVoteCount( $option, $this);	
 		//$resTwo = $this->database->getVoteResults("Coca Cola", "Pepsi", $this);
@@ -67,4 +105,7 @@ class MainController extends CI_Controller {
 		$this->load->view("templates/results", $data);
 	}
 
+	function myErrorHandler($errno, $errstr, $errfile, $errline) {
+
+	}
 }

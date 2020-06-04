@@ -55,3 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['testing'] = "votecontroller/index";
 $route["results"] = "maincontroller/showresults";
 $route["updatecount/(:any)"] = "maincontroller/incrementsubmission/$1";
+$route['login'] = 'usercontroller/view/$1';
+$route["logout"] = "usercontroller/logout";
+
+
